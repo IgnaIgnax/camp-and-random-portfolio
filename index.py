@@ -68,21 +68,26 @@ sp500_yield = sp500.pct_change(fill_method="ffill").dropna()
 st.write("**S&P500 Yield**")
 st.write(sp500_yield)
 
-portfolio_yield['^GSPC']=sp500_yield
+portfolio_yield['CSSPX.MI']=sp500_yield
 cov_matrix = portfolio_yield.cov()
-del portfolio_yield['^GSPC']
+del portfolio_yield['CSSPX.MI']
 
 sp500_variance = np.var(sp500_yield)
 
 betas = []
 for stock in portfolio_tickers:
-  stock_beta = cov_matrix.loc[stock, "^GSPC"]/sp500_variance
+  stock_beta = cov_matrix.loc[stock, "CSSPX.MI"]/sp500_variance
   betas.append(round(stock_beta, 3))
 
 portflio_df = pd.DataFrame({"Ticker": portfolio_tickers, "Beta": betas, "Weight": 1/n})
 
 st.write("**Beta stocks**")
 st.write("The beta for each stock was calculated by dividing the covariance of the stock with respect to the S&P 500 by the variance of theS&P 500. The covariance matrix was generated using an existing Python function.")
+code='''betas = [] 
+  for stock in portfolio_tickers: 
+    stock_beta = cov_matrix.loc[stock, "CSSPX.MI"]/sp500_variance 
+    betas.append(round(stock_beta, 3))'''
+st.code(code, language='python')
 st.write(portflio_df)
 
 beta_sum = 0
