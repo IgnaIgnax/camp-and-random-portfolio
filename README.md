@@ -1,4 +1,4 @@
-#Comparison between CAPM and Random Stock Portfolio
+# Comparison between CAPM and Random Stock Portfolio
 
 The Capital Asset Pricing Model (CAPM) is one of the fundamental theories in financial investment evaluation, providing a rigorous methodology to estimate the expected return of a financial asset based on its risk. However, the practical application of the CAPM has often raised questions and debates regarding its ability to accurately predict the actual returns on investments in a real-world context.
 
